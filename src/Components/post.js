@@ -8,5 +8,4 @@ class Post extends  Component{
         return <div>Hello,Post</div>
     }
 }
-
 export default Post;
