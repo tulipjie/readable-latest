@@ -3,21 +3,24 @@ import React, { Component } from 'react';
 import Home from './home';
 import Posts from './posts';
 import Categories from './categories';
+import *as PostsAPI from '../utils/PostsAPI';
+import *as CategoriesAPI from '../utils/CategoriesAPI';
+import {addPost,addComment,removePost,removeComment,editPost,editComment} from '../Actions';
 
 
 import {connect} from 'react-redux';
 import {Navbar,Nav,NavItem,NavDropdown,MenuItem} from 'react-bootstrap';
 
 
-class NavItem1 extends React.Component {
+class NavItem1 extends Component {
 
     render() {
-
         return (
             <Navbar inverse collapseOnSelect>
                 <Navbar.Header>
                     <Navbar.Brand >
                         <a href="/"> Readable</a>
+
                     </Navbar.Brand>
                     <Navbar.Toggle />
                 </Navbar.Header>
@@ -53,14 +56,31 @@ class NavItem1 extends React.Component {
 
 
 class App extends Component {
+    state={
+        posts:[],
+        comments:[],
+        categories:[]
+    };
+    componentDidMount(){
+        PostsAPI.getAll().then((posts) =>{
+            this.setState({posts})
+        });
+        CategoriesAPI .getAll().then((categories) =>{
+            this.setState({categories})
+        });
+    }
+
+
   render() {
+      
+
     return (
     <div>
         <NavItem1/>
         <Switch>
-            <Route exact path="/" component={Home} />
-            <Route  path="/posts" component={Posts}/>
-            <Route  path="/categories" component={Categories}/>
+            <Route exact path="/"  render={()=>(<Home state={this.props}/>)}/>
+            <Route  path="/posts" render={()=>(<Posts state={this.props}/>)}/>
+            <Route  path="/categories" render={()=>(<Categories state={this.props}/>)}/>
         </Switch>
     </div>
 
@@ -76,4 +96,18 @@ const mapStateToProps=(state)=>{
     }
 };
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps=(dispatch)=>{
+    return{
+        addPost:(data) =>dispatch(addPost(data)),
+        addComment:(data)=>dispatch(addComment(data)),
+        removePost:(data)=>dispatch(removePost(data)),
+        removeComment:(data)=>dispatch(removeComment(data)),
+        editPost:(data)=>dispatch(editPost(data)),
+        editComment:(data)=>dispatch(editComment(data)),
+    }
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(App);
