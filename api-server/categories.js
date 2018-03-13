@@ -38,4 +38,4 @@ function getAll (token) {
 
 module.exports = {
   getAll
-}
+};

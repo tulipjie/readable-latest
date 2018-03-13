@@ -2,7 +2,7 @@
  * Created by sxy on 2018/1/31.
  */
 import {ADD_POST,EDIT_POST,REMOVE_POST,
-         ADD_COMMENT,EDIT_COMMENT,REMOVE_COMMENT} from '../Actions';
+         ADD_COMMENT,EDIT_COMMENT,REMOVE_COMMENT,GET_CATEGORY} from '../Actions';
 import {combineReducers} from 'redux';
 // import *as PostsAPI from '../utils/PostsAPI';
 // //产生随机序列
@@ -70,7 +70,16 @@ function comments(state={},action){
     }
 }
 function categories(state={},action) {
+    const {name,path}=action;
     switch(action.type){
+        case GET_CATEGORY:
+            return{
+                ...state,
+                [name]:{
+                    name,
+                    path
+                }
+            };
         default:
             return state;
     }

@@ -9,20 +9,20 @@ import Nav from '../Components/list';
 import *as PostsAPI from '../utils/PostsAPI';
 import *as CategoriesAPI from '../utils/CategoriesAPI';
 import {connect} from 'react-redux';
-import {addPost,addComment,removePost,removeComment,editPost,editComment} from '../Actions';
+import {addPost,addComment,removePost,removeComment,editPost,editComment,getCategory} from '../Actions';
 
 class Home extends  Component{
-    state={
-        updatePosts:[],
-        updateComments:[],
-        updateCategories:[]
-    };
     componentDidMount(){
-        PostsAPI.getAll().then((updatePosts) =>{
-            this.setState({updatePosts})
+        const {addPosts,getCategories}=this.props;
+        PostsAPI.getAll().then((posts) =>{
+            posts.map((post)=>{
+                return addPosts(post)
+            }) ;
         });
-        CategoriesAPI.getAll().then((updateCategories) =>{
-            this.setState({updateCategories})
+        CategoriesAPI.getAll().then((categories) =>{
+            categories.map((category)=>{
+                return getCategories(category)
+            })
         });
     }
 
@@ -65,12 +65,13 @@ const mapStateToProps=(state)=>{
 
 const mapDispatchToProps=(dispatch)=>{
     return{
-        addPost:(data) =>dispatch(addPost(data)),
-        addComment:(data)=>dispatch(addComment(data)),
-        removePost:(data)=>dispatch(removePost(data)),
-        removeComment:(data)=>dispatch(removeComment(data)),
-        editPost:(data)=>dispatch(editPost(data)),
-        editComment:(data)=>dispatch(editComment(data)),
+        addPosts:(data) =>dispatch(addPost(data)),
+        addComments:(data)=>dispatch(addComment(data)),
+        removePosts:(data)=>dispatch(removePost(data)),
+        removeComments:(data)=>dispatch(removeComment(data)),
+        editPosts:(data)=>dispatch(editPost(data)),
+        editComments:(data)=>dispatch(editComment(data)),
+        getCategories:(data)=>dispatch(getCategory(data))
     }
 };
 

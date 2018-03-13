@@ -28,11 +28,11 @@ class Nav extends Component{
                         <h3>{post.title}</h3>
                         <h4>{post.author}</h4>
                         <p className="content">{post.body}</p>
-                        <div><i className="fa fa-thumbs-o-up fa-lg"/> {post.voteScore}
+                        <div><Button><i className="fa fa-thumbs-o-up fa-lg"/> {post.voteScore}</Button>&nbsp;
 
                             <span>
 
-                                        <Button onClick={() => this.setState({open:!this.state.open})}>
+                                        <Button  onClick={() => this.setState({open:!this.state.open})}>
                                             comment
                                         </Button>
                                         <Collapse in={this.state.open}>

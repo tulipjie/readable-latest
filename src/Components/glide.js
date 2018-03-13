@@ -5,33 +5,26 @@ import React,{Component} from 'react';
 import {Carousel} from 'react-bootstrap'
 
 class Glide extends Component {
-    render(){
-        return (
-            <Carousel>
-                <Carousel.Item>
-                    <img width={500} height={500} alt="500x500" src={require('./picture/timg.jpg')}/>
-                    <Carousel.Caption>
-                        <h3>first category:react</h3>
-                        <p>A JavaScript library for building user interfaces</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img width={500} height={500} alt="500x500"src={require('./picture/timg.jpg')}/>
-                    <Carousel.Caption>
-                        <h3>Second category:redux</h3>
-                        <p>A predictable state container for JavaScript apps</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img width={500} height={500} alt="500x500" src={require('./picture/timg.jpg')}/>
-                    <Carousel.Caption>
-                        <h3>Third category:udacity</h3>
-                        <p>A A learning website for Programming technology</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
 
-            </Carousel>
-        )
+    render(){
+        const categories=[];
+        const item=Object.keys(this.props.state.categories);
+        for (let i=0;i<item.length;i++){
+            categories.push(this.props.state.categories[item[i]])
+        }
+         return (
+             <Carousel>
+                {categories.map((category)=>(
+                    <Carousel.Item key={category.name}>
+                        <img width={500} height={500} alt="500x500" src={require('./picture/timg.jpg')}/>
+                        <Carousel.Caption>
+                            <h3>To category:{category.name}</h3>
+                            <p>The path of the category is {category.path}</p>
+                         </Carousel.Caption>
+                    </Carousel.Item>
+                ))}
+             </Carousel>
+          )
     }
 }
 

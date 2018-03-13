@@ -13,7 +13,7 @@ class App extends Component {
         <NavI/>
         <Switch>
             <Route exact path="/"  component={Home}/>
-            <Route  path="/posts" component={Posts}/>
+            <Route  path="/:postId" component={Posts}/>
             <Route  path="/categories" component={Categories}/>)}/>
         </Switch>
     </div>
