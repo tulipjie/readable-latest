@@ -2,7 +2,7 @@
  * Created by sxy on 2018/1/31.
  */
 import {ADD_POST,EDIT_POST,REMOVE_POST,
-         ADD_COMMENT,EDIT_COMMENT,REMOVE_COMMENT,GET_CATEGORY} from '../Actions';
+    ADD_COMMENT,EDIT_COMMENT,REMOVE_COMMENT,GET_CATEGORY} from '../Actions';
 import {combineReducers} from 'redux';
 // import *as PostsAPI from '../utils/PostsAPI';
 // //产生随机序列
@@ -22,7 +22,7 @@ import {combineReducers} from 'redux';
 
 
 function posts(state={},action) {
-    const {id, timestamp, title, body, author, category, voteScore, deleted}=action;
+    const {id, timestamp, title, body, author, category, voteScore, deleted,commentCount}=action;
     switch (action.type){
         case ADD_POST:
             return {
@@ -35,7 +35,8 @@ function posts(state={},action) {
                     author,
                     category,
                     voteScore,
-                    deleted
+                    deleted,
+                commentCount
                 }
 
             };
@@ -53,14 +54,26 @@ function posts(state={},action) {
             };
         default:
             return state;
-
     }
 
 }
 function comments(state={},action){
+    const {id,parentId,timestamp,body,author,voteScore,deleted,parentDeleted}=action;
     switch (action.type){
         case ADD_COMMENT:
-            return {};
+            return {
+                ...state,
+                [id]:{
+                    id,
+                    parentId,
+                    timestamp,
+                    body,
+                    author,
+                    voteScore,
+                    deleted,
+                    parentDeleted
+                }
+            };
         case EDIT_COMMENT:
             return {};
         case REMOVE_COMMENT:

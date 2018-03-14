@@ -5,7 +5,8 @@ import React,{Component} from "react";
 import {Grid,Row,Col} from 'react-bootstrap';
 import {Route} from 'react-router-dom';
 import Glide from '../Components/glide';
-import Nav from '../Components/list';
+import List from '../Components/list';
+import NavI from '../Components/nav';
 import *as PostsAPI from '../utils/PostsAPI';
 import *as CategoriesAPI from '../utils/CategoriesAPI';
 import {connect} from 'react-redux';
@@ -16,7 +17,7 @@ class Home extends  Component{
         const {addPosts,getCategories}=this.props;
         PostsAPI.getAll().then((posts) =>{
             posts.map((post)=>{
-                return addPosts(post)
+                 return addPosts(post)
             }) ;
         });
         CategoriesAPI.getAll().then((categories) =>{
@@ -24,6 +25,7 @@ class Home extends  Component{
                 return getCategories(category)
             })
         });
+
     }
 
     render(){
@@ -40,10 +42,11 @@ class Home extends  Component{
         }
         return (
             <div>
+                <NavI/>
             <Grid>
                 <Row className="show-grid">
                     <Col xs={12} md={8}>
-                        <Route   render={()=>(<Nav state={this.props}/>)}/>
+                        <Route   render={()=>(<List state={this.props}/>)}/>
                     </Col>
                     <Col xs={12} md={4}>
                         <Route   render={()=>(<Glide state={this.props}/>)}/>

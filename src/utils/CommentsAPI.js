@@ -19,10 +19,7 @@ export const getByParent = (parentId)=>
         .then(res => res.json())
         .then(data => data);
 
-export const get=(id)=>
-    fetch(`${api}/comments/${id}`,{headers})
-        .then(res => res.json())
-        .then(data => data);
+
 
 
 

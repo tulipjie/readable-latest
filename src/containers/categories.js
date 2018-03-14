@@ -3,11 +3,16 @@
  */
 import React,{Component} from "react";
 import {connect} from 'react-redux';
+import NavI from '../Components/nav';
 import {addPost,addComment,removePost,removeComment,editPost,editComment} from '../Actions';
 
 class Categories extends  Component{
     render(){
-        return <div>Hello,categories</div>
+        return (
+            <div>
+                <NavI/>
+            </div>
+        )
     }
 }
 const mapStateToProps=(state)=>{

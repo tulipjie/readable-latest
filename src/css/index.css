@@ -1,0 +1,5 @@
+.content{
+    overflow: hidden;/*超出的文本隐藏*/
+    text-overflow:ellipsis;/*超出部分用省略号显示*/
+    white-space:nowrap;/*溢出不换行*/
+}

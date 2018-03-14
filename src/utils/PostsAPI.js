@@ -18,4 +18,8 @@ export const getAll = () =>
         .then(res => res.json())
         .then(data => data);
 
+export const get=(id)=>
+    fetch(`${api}/posts/${id}`,{headers})
+        .then(res=>res.json())
+        .then(data=>data);
 
