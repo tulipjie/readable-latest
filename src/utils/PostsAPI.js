@@ -22,4 +22,14 @@ export const get=(id)=>
     fetch(`${api}/posts/${id}`,{headers})
         .then(res=>res.json())
         .then(data=>data);
+export const vote=(id,option)=>
+    fetch(`${api}/posts/${id}`,
+        {
+            method:'POST',
+            headers,
+            body:JSON.stringify(option)
+        })
+        .then(res=>res.json())
+        .then(data=>console.log(data));
+
 

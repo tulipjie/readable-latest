@@ -4,7 +4,8 @@
 import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
 import {Button,Badge} from 'react-bootstrap';
-import  '../css/index.css'
+import  '../css/index.css';
+import *as PostsAPI from '../utils/PostsAPI';
 
 class Nav extends Component{
     render(){
@@ -28,7 +29,7 @@ class Nav extends Component{
                         <Link to={`${post.category}/${post.id}`}><h3>{post.title}</h3></Link>
                         <h4>{post.author}</h4>
                         <p className="content">{post.body}</p>
-                        <div><Button onClick={()=>increasePostsVote(post)}><i className="fa fa-thumbs-o-up fa-lg"/> {post.voteScore}</Button>&nbsp;
+                        <div><Button onClick={()=>{increasePostsVote(post);PostsAPI.vote(post.id,"upVote")}}><i className="fa fa-thumbs-o-up fa-lg"/> {post.voteScore}</Button>&nbsp;
                             <Button onClick={()=>decreasePostsVote(post)}><i className="fa fa-thumbs-o-down fa-lg"/></Button>&nbsp;
                             <Button>comment&nbsp;<Badge>{post.commentCount}</Badge></Button>
                             &nbsp;<Button>edit</Button>
