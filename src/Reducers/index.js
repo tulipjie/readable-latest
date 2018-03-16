@@ -2,7 +2,8 @@
  * Created by sxy on 2018/1/31.
  */
 import {ADD_POST,EDIT_POST,REMOVE_POST,
-    ADD_COMMENT,EDIT_COMMENT,REMOVE_COMMENT,GET_CATEGORY} from '../Actions';
+    ADD_COMMENT,EDIT_COMMENT,REMOVE_COMMENT,GET_CATEGORY,
+    INCREASE_POST_VOTE,DECREASE_POST_VOTE,INCREASE_COMMENT_VOTE,DECREASE_COMMENT_VOTE} from '../Actions';
 import {combineReducers} from 'redux';
 // import *as PostsAPI from '../utils/PostsAPI';
 // //产生随机序列
@@ -40,6 +41,24 @@ function posts(state={},action) {
                 }
 
             };
+        case INCREASE_POST_VOTE:
+            return {
+                ...state,
+                [id]:{
+                    ...state[id],
+                    voteScore:voteScore+1
+                }
+            };
+        case DECREASE_POST_VOTE:
+            return{
+                ...state,
+                [id]:{
+                    ...state[id],
+                    voteScore:voteScore-1
+                }
+
+            };
+
         case EDIT_POST:
             return {
 
@@ -49,7 +68,7 @@ function posts(state={},action) {
                 ...state,
                 [id]:{
                     ...state[id],
-                    [deleted]:!deleted
+                    deleted:true
                 }
             };
         default:
@@ -74,10 +93,32 @@ function comments(state={},action){
                     parentDeleted
                 }
             };
+        case INCREASE_COMMENT_VOTE:
+            return{
+                ...state,
+                [id]:{
+                    ...state[id],
+                    voteScore:voteScore+1
+                }
+            };
+        case DECREASE_COMMENT_VOTE:
+            return{
+                ...state,
+                [id]:{
+                    ...state[id],
+                    voteScore:voteScore-1
+                }
+            };
         case EDIT_COMMENT:
             return {};
         case REMOVE_COMMENT:
-            return {};
+            return {
+                ...state,
+                [id]:{
+                    ...state[id],
+                    deleted:true
+                }
+            };
         default :
             return state;
     }

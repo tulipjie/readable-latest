@@ -10,7 +10,7 @@ import NavI from '../Components/nav';
 import *as PostsAPI from '../utils/PostsAPI';
 import *as CategoriesAPI from '../utils/CategoriesAPI';
 import {connect} from 'react-redux';
-import {addPost,addComment,removePost,removeComment,editPost,editComment,getCategory} from '../Actions';
+import {addPost,addComment,removePost,increasePostVote,decreasePostVote,removeComment,editPost,editComment,getCategory} from '../Actions';
 
 class Home extends  Component{
     componentDidMount(){
@@ -74,7 +74,9 @@ const mapDispatchToProps=(dispatch)=>{
         removeComments:(data)=>dispatch(removeComment(data)),
         editPosts:(data)=>dispatch(editPost(data)),
         editComments:(data)=>dispatch(editComment(data)),
-        getCategories:(data)=>dispatch(getCategory(data))
+        getCategories:(data)=>dispatch(getCategory(data)),
+        increasePostsVote:(data)=>dispatch(increasePostVote(data)),
+        decreasePostsVote:(data)=>dispatch(decreasePostVote(data))
     }
 };
 

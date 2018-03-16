@@ -19,6 +19,7 @@ class Nav extends Component{
         for (let j=0;j<list.length;j++){
             comments.push(this.props.state.comments[list[j]])
         }
+        const {increasePostsVote,decreasePostsVote,removePosts}=this.props.state;
 
         return(
             <ul>
@@ -27,11 +28,11 @@ class Nav extends Component{
                         <Link to={`${post.category}/${post.id}`}><h3>{post.title}</h3></Link>
                         <h4>{post.author}</h4>
                         <p className="content">{post.body}</p>
-                        <div><Button><i className="fa fa-thumbs-o-up fa-lg"/> {post.voteScore}</Button>&nbsp;
-
-                            <span><Button>comment&nbsp;<Badge>{post.commentCount}</Badge></Button> </span>
-
-                            &nbsp;<span><Button>delete</Button></span>
+                        <div><Button onClick={()=>increasePostsVote(post)}><i className="fa fa-thumbs-o-up fa-lg"/> {post.voteScore}</Button>&nbsp;
+                            <Button onClick={()=>decreasePostsVote(post)}><i className="fa fa-thumbs-o-down fa-lg"/></Button>&nbsp;
+                            <Button>comment&nbsp;<Badge>{post.commentCount}</Badge></Button>
+                            &nbsp;<Button>edit</Button>
+                            &nbsp;<Button onClick={()=>removePosts(post)}>delete</Button>
                         </div>
                     </div>
                 ))}
