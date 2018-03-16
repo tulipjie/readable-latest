@@ -3,6 +3,8 @@
  */
 import React,{Component} from "react";
 import {Button,Badge,Collapse} from 'react-bootstrap';
+import *as PostsAPI from '../utils/PostsAPI';
+import *as CommentsAPI from '../utils/CommentsAPI';
 
 class Post extends  Component{
     state={
@@ -33,8 +35,8 @@ class Post extends  Component{
                 <h2>{post[0].title}</h2>
                 <h3>{post[0].author} </h3>
                 <p>{post[0].body}</p>
-                <h4><Button onClick={()=>{ this.setState({disable:true});increasePostsVote(post[0])} } disabled={this.state.disable}><i className="fa fa-thumbs-o-up fa-lg"/> {post[0].voteScore}</Button>&nbsp;
-                    <Button onClick={()=>{this.setState({disable:true});decreasePostsVote(post[0])}} disabled={this.state.disable}><i className="fa fa-thumbs-o-down fa-lg"/> </Button>
+                <h4><Button onClick={()=>{ this.setState({disable:true});increasePostsVote(post[0]);PostsAPI.vote(post[0].id,"upVote")} } disabled={this.state.disable}><i className="fa fa-thumbs-o-up fa-lg"/> {post[0].voteScore}</Button>&nbsp;
+                    <Button onClick={()=>{this.setState({disable:true});decreasePostsVote(post[0]);PostsAPI.vote(post[0].id,"downVote")}} disabled={this.state.disable}><i className="fa fa-thumbs-o-down fa-lg"/> </Button>
                     <Button onClick={()=>this.setState({open:!this.state.open})}>comment&nbsp;<Badge>{post[0].commentCount}</Badge></Button>
 
                     &nbsp;<Button onClick={()=>removePosts(post)}>delete</Button>
@@ -45,8 +47,8 @@ class Post extends  Component{
                             <div key={comment.id}>
                                 <p>{comment.body}</p>
                                 <p>{comment.author}</p>
-                                <p> <Button onClick={()=>{increaseCommentsVote(comment)}}><i className="fa fa-thumbs-o-up fa-lg"/> {comment.voteScore}</Button>&nbsp;
-                                    <Button onClick={()=>decreaseCommentsVote(comment)}><i className="fa fa-thumbs-o-down fa-lg"/> </Button>
+                                <p> <Button onClick={()=>{increaseCommentsVote(comment);CommentsAPI.vote(comment.id,"upVote")}}><i className="fa fa-thumbs-o-up fa-lg"/> {comment.voteScore}</Button>&nbsp;
+                                    <Button onClick={()=>{decreaseCommentsVote(comment);CommentsAPI.vote(comment.id,"downVote")}}><i className="fa fa-thumbs-o-down fa-lg"/> </Button>
                                     <Button >delete</Button>
                                 </p>
                             </div>

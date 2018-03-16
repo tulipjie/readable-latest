@@ -29,16 +29,10 @@ class Home extends  Component{
     }
 
     render(){
-        const posts=[];
+        const list=[];
         const item=Object.keys(this.props.posts);
         for (let i=0;i<item.length;i++){
-            posts.push(this.props.posts[item[i]])
-        }
-
-        const comments=[];
-        const list=Object.keys(this.props.comments);
-        for (let j=0;j<list.length;j++){
-            comments.push(this.props.comments[list[j]])
+            list.push(this.props.posts[item[i]])
         }
         return (
             <div>
@@ -46,7 +40,7 @@ class Home extends  Component{
             <Grid>
                 <Row className="show-grid">
                     <Col xs={12} md={8}>
-                        <Route   render={()=>(<List state={this.props}/>)}/>
+                        <Route   render={()=>(<List  state={this.props} list={list}/>)}/>
                     </Col>
                     <Col xs={12} md={4}>
                         <Route   render={()=>(<Glide state={this.props}/>)}/>

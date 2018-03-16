@@ -9,7 +9,7 @@ if (!token)
     token = localStorage.token = Math.random().toString(36).substr(-8);
 
 const headers = {
-    'Accept': 'application/json',
+    'Content-Type': 'application/json',
     'Authorization': token
 };
 
@@ -27,9 +27,18 @@ export const vote=(id,option)=>
         {
             method:'POST',
             headers,
-            body:JSON.stringify(option)
+            body:JSON.stringify({"option":option})
         })
+        .then(res=>res.json());
+export const getByCategory=(category)=>{
+    fetch(`${api}/${category}/posts`,{headers})
         .then(res=>res.json())
-        .then(data=>console.log(data));
+        .then(data=>data)
+};
+
+
+
+
+
 
 

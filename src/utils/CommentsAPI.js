@@ -9,15 +9,23 @@ if (!token)
     token = localStorage.token = Math.random().toString(36).substr(-8);
 
 const headers = {
-    'Accept': 'application/json',
+    'Content-Type': 'application/json',
     'Authorization': token
 };
+
 
 
 export const getByParent = (parentId)=>
     fetch(`${api}/posts/${parentId}/comments`,{headers})
         .then(res => res.json())
         .then(data => data);
+export const vote=(id,option)=>
+    fetch(`${api}/comments/${id}`,{
+        method:'POST',
+        headers,
+        body:JSON.stringify({"option":option})
+        }).then(res=>res.json());
+
 
 
 
