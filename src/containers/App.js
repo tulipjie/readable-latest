@@ -10,7 +10,6 @@ class App extends Component {
   render() {
     return (
     <div>
-
         <Switch>
             <Route exact path="/"  component={Home}/>
             <Route  path="/:category/:postId" component={Posts}/>

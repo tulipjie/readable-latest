@@ -4,6 +4,7 @@
 import React,{Component} from "react";
 import {connect} from 'react-redux';
 import *as CommentAPI from '../utils/CommentsAPI';
+import *as PostsAPI from '../utils/PostsAPI';
 import {Route} from 'react-router-dom';
 import Post from '../Components/post';
 
@@ -11,21 +12,31 @@ import {addPost,addComment,removePost,removeComment,editPost,editComment,
     getCategory,increasePostVote,decreasePostVote,increaseCommentVote,decreaseCommentVote} from '../Actions';
 
 class Posts extends  Component{
+    state={
+        open:false
+    };
 
     componentDidMount(){
         const {postId}=this.props.match.params;
-        const {addComments}=this.props;
+        const {addComments,addPosts}=this.props;
 
+        PostsAPI.get(postId).then((post)=>{
+            return addPosts(post)
+            });
         CommentAPI.getByParent(postId).then((comments)=>{
-            comments.map((comment)=>{
+            comments.sort((a,b)=>{
+                return b.voteScore-a.voteScore
+            }).map((comment)=>{
                 return addComments(comment)
             });
         });
     }
     render(){
+
         return (
             <div>
                 <Route render={()=>(<Post state={this.props}/>)}/>
+
             </div>
 
         )

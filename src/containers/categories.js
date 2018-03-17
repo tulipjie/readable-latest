@@ -14,7 +14,9 @@ class Categories extends  Component{
         const {addPosts}=this.props;
         const {category}=this.props.match.params;
         PostsAPI.getByCategory(category).then((posts) =>{
-                posts.map((post)=>{
+                posts.sort((a,b)=>{
+                    return b.voteScore-a.voteScore
+                }).map((post)=>{
                     return addPosts(post)
                 });
             });

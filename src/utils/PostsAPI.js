@@ -30,11 +30,11 @@ export const vote=(id,option)=>
             body:JSON.stringify({"option":option})
         })
         .then(res=>res.json());
-export const getByCategory=(category)=>{
+export const getByCategory=(category)=>
     fetch(`${api}/${category}/posts`,{headers})
         .then(res=>res.json())
         .then(data=>data)
-};
+
 
 
 

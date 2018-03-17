@@ -16,7 +16,9 @@ class Home extends  Component{
     componentDidMount(){
         const {addPosts,getCategories}=this.props;
         PostsAPI.getAll().then((posts) =>{
-            posts.map((post)=>{
+            posts.sort((a,b)=>{
+                return b.voteScore-a.voteScore
+            }).map((post)=>{
                  return addPosts(post)
             }) ;
         });

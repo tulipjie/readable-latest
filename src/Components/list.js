@@ -9,7 +9,6 @@ import *as PostsAPI from '../utils/PostsAPI';
 
 class Nav extends Component{
     render(){
-
         const {increasePostsVote,decreasePostsVote,removePosts}=this.props.state;
         return(
             <ul>
