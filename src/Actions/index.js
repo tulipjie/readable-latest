@@ -60,17 +60,17 @@ export const removePost=({id,timestamp,title,body,author,category,voteScore,dele
     }
 };
 
-export const removeComment=({id,parentId,timestamp,title,body,author,voteScore,deleted})=>{
+export const removeComment=({id,parentId,timestamp,body,author,voteScore,deleted,parentDeleted})=>{
     return{
         type:REMOVE_COMMENT,
         id,
         parentId,
         timestamp,
-        title,
         body,
         author,
         voteScore,
-        deleted
+        deleted,
+        parentDeleted
     }
 };
 export const editPost=({id,timestamp,title,body,author,category,voteScore,deleted,commentCount})=>{

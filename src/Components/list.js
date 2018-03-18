@@ -21,7 +21,7 @@ class Nav extends Component{
                             <Button onClick={()=>{decreasePostsVote(post);PostsAPI.vote(post.id,"downVote")}}><i className="fa fa-thumbs-o-down fa-lg"/></Button>&nbsp;
                             <Button>comment&nbsp;<Badge>{post.commentCount}</Badge></Button>
                             &nbsp;<Button>edit</Button>
-                            &nbsp;<Button onClick={()=>removePosts(post)}>delete</Button>
+                            &nbsp;<Button onClick={()=>{removePosts(post);PostsAPI.deletePost(post.id)}}>delete</Button>
                         </div>
                     </div>
                 ))}

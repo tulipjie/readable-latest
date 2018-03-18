@@ -2,17 +2,22 @@
  * Created by sxy on 2018/3/11.
  */
 import React,{Component} from "react";
-import {Grid,Row,Col} from 'react-bootstrap';
+import {Grid,Row,Col,Button} from 'react-bootstrap';
 import {Route} from 'react-router-dom';
 import Glide from '../Components/glide';
 import List from '../Components/list';
 import NavI from '../Components/nav';
+import AddPost from '../Components/addPost';
 import *as PostsAPI from '../utils/PostsAPI';
 import *as CategoriesAPI from '../utils/CategoriesAPI';
 import {connect} from 'react-redux';
-import {addPost,addComment,removePost,increasePostVote,decreasePostVote,removeComment,editPost,editComment,getCategory} from '../Actions';
+import {addPost,addComment,removePost,increasePostVote,decreasePostVote,
+    removeComment,editPost,editComment,getCategory} from '../Actions';
 
 class Home extends  Component{
+    state={
+        add:false
+    };
     componentDidMount(){
         const {addPosts,getCategories}=this.props;
         PostsAPI.getAll().then((posts) =>{
@@ -38,18 +43,24 @@ class Home extends  Component{
         }
         return (
             <div>
-                <NavI/>
-            <Grid>
-                <Row className="show-grid">
-                    <Col xs={12} md={8}>
-                        <Route   render={()=>(<List  state={this.props} list={list}/>)}/>
-                    </Col>
-                    <Col xs={12} md={4}>
-                        <Route   render={()=>(<Glide state={this.props}/>)}/>
-                    </Col>
-                </Row>
-            </Grid>
+                <Route render={()=>( <NavI state={this.state}/>)}/>
 
+                {!this.state.add?
+                    <Grid>
+                        <Row className="show-grid">
+                            <Col xs={12} md={8}>
+                                <Route   render={()=>(<List  state={this.props} list={list}/>)}/>
+                            </Col>
+                            <Col xs={12} md={4}>
+                                <Route   render={()=>(<Glide state={this.props}/>)}/>
+                            </Col>
+                        </Row>
+                        <Button  onClick={()=>{this.setState({add:!this.state.add})}}> Add post</Button>
+                    </Grid>:
+                    <div>
+                        <Route render={()=>(<AddPost state={this.state}/>)}/>
+                    </div>
+                }
         </div>)
     }
 }

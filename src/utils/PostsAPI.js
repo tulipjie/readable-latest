@@ -33,7 +33,22 @@ export const vote=(id,option)=>
 export const getByCategory=(category)=>
     fetch(`${api}/${category}/posts`,{headers})
         .then(res=>res.json())
-        .then(data=>data)
+        .then(data=>data);
+export const deletePost=(id)=>
+    fetch(`${api}/posts/${id}`,
+        {
+            headers,
+            method:'DELETE'
+        })
+        .then(res=>res.json());
+export const addPost=(post)=>
+    fetch(`${api}/posts`,
+        {
+            method:'POST',
+            headers,
+            body:JSON.stringify(post)
+        })
+        .then(res=>res.json());
 
 
 

@@ -31,13 +31,11 @@ class NavI extends Component {
                     </Nav>
                     <Nav pullRight>
                         <NavItem eventKey={1} >
-                            Sign In
-                        </NavItem>
-                        <NavItem eventKey={2} >
-                            Sign Up
+                         Sign Up
                         </NavItem>
                     </Nav>
                 </Navbar.Collapse>
+
             </Navbar>
         );
     }

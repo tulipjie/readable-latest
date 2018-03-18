@@ -7,13 +7,15 @@ import *as CommentAPI from '../utils/CommentsAPI';
 import *as PostsAPI from '../utils/PostsAPI';
 import {Route} from 'react-router-dom';
 import Post from '../Components/post';
+import NavI from '../Components/nav';
 
 import {addPost,addComment,removePost,removeComment,editPost,editComment,
     getCategory,increasePostVote,decreasePostVote,increaseCommentVote,decreaseCommentVote} from '../Actions';
 
 class Posts extends  Component{
     state={
-        open:false
+        open:false,
+
     };
 
     componentDidMount(){
@@ -35,8 +37,8 @@ class Posts extends  Component{
 
         return (
             <div>
-                <Route render={()=>(<Post state={this.props}/>)}/>
-
+                <NavI/>
+                <Route render={()=>(<Post  state={this.props}/>)}/>
             </div>
 
         )
@@ -48,7 +50,7 @@ const mapStateToProps=(state)=>{
     return {
         posts:state.posts,
         categories:state.categories,
-        comments:state.comments
+        comments:state.comments,
     }
 };
 
