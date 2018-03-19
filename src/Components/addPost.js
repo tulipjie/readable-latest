@@ -108,7 +108,6 @@ class AddPost extends Component {
                     Add Post
                 </Button>
             </form>
-            {console.log(category)}
         </div>
 
         );

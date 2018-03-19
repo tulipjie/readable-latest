@@ -15,7 +15,7 @@ import {addPost,addComment,removePost,removeComment,editPost,editComment,
 class Posts extends  Component{
     state={
         open:false,
-
+        postId:this.props.match.params.postId
     };
 
     componentDidMount(){
@@ -38,7 +38,7 @@ class Posts extends  Component{
         return (
             <div>
                 <NavI/>
-                <Route render={()=>(<Post  state={this.props}/>)}/>
+                <Route render={()=>(<Post postId={this.state.postId} state={this.props}/>)}/>
             </div>
 
         )

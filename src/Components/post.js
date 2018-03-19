@@ -5,6 +5,9 @@ import React,{Component} from "react";
 import {Button,Badge,Collapse,FormGroup,ControlLabel,FormControl} from 'react-bootstrap';
 import *as PostsAPI from '../utils/PostsAPI';
 import *as CommentsAPI from '../utils/CommentsAPI';
+import EditPost from  './editPost';
+import EditComment from  './editComment';
+import {Route} from 'react-router-dom';
 
 function randomWord(mount){
     let str = "",
@@ -90,7 +93,9 @@ class FormInstance extends Component {
 class Post extends  Component{
     state={
         open:false,
-        disable:false
+        disable:false,
+        edit:false,
+        commentEdit:false
     };
 
     render(){
@@ -121,8 +126,14 @@ class Post extends  Component{
                         <h4><Button onClick={()=>{ this.setState({disable:true});increasePostsVote(post);PostsAPI.vote(post.id,"upVote")} } disabled={this.state.disable}><i className="fa fa-thumbs-o-up fa-lg"/> {post.voteScore}</Button>&nbsp;
                             <Button onClick={()=>{this.setState({disable:true});decreasePostsVote(post);PostsAPI.vote(post.id,"downVote")}} disabled={this.state.disable}><i className="fa fa-thumbs-o-down fa-lg"/> </Button>
                             <Button onClick={()=>this.setState({open:!this.state.open})}>comment&nbsp;<Badge>{post.commentCount}</Badge></Button>
+                            &nbsp;<Button onClick={()=>{this.setState({edit:!this.state.edit})}}>edit</Button>
                             &nbsp;<Button onClick={()=>{removePosts(post);PostsAPI.deletePost(post.id)}}>delete</Button>
                         </h4>
+                        <Collapse in={this.state.edit}>
+                            <div>
+                                <Route render={()=>(<EditPost state={this.props.state}/>)}/>
+                            </div>
+                        </Collapse>
                         <Collapse in={this.state.open}>
                             <div>
                                 {comments.filter((comment)=>!comment.deleted).map((comment)=>(
@@ -131,13 +142,21 @@ class Post extends  Component{
                                         <p>{comment.author}</p>
                                         <p> <Button onClick={()=>{increaseCommentsVote(comment);CommentsAPI.vote(comment.id,"upVote")}}><i className="fa fa-thumbs-o-up fa-lg"/> {comment.voteScore}</Button>&nbsp;
                                             <Button onClick={()=>{decreaseCommentsVote(comment);CommentsAPI.vote(comment.id,"downVote")}}><i className="fa fa-thumbs-o-down fa-lg"/> </Button>
+                                            <Button onClick={()=>{this.setState({commentEdit:!this.state.commentEdit})}}>edit</Button>
                                             <Button onClick={()=>{removeComments(comment);CommentsAPI.deleteComment(comment.id)}}>delete</Button>
                                         </p>
+                                        <Collapse in={this.state.commentEdit}>
+                                            <div>
+                                                <Route render={()=>(<EditComment state={comment}/>)}/>
+                                            </div>
+                                        </Collapse>
                                     </div>
                                 ))}
+
                                 <FormInstance postId={this.props.state.match.params.postId}/>
                             </div>
                         </Collapse>
+
                     </div>
                 ))}
 
