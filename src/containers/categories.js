@@ -4,7 +4,7 @@
 import React,{Component} from "react";
 import {connect} from 'react-redux';
 import NavI from '../Components/nav';
-import {addPost,addComment,removePost,removeComment,editPost,editComment} from '../Actions';
+import {addPost} from '../Actions';
 import *as PostsAPI from '../utils/PostsAPI';
 import List from '../Components/list';
 import {Route} from 'react-router-dom';
@@ -38,20 +38,13 @@ class Categories extends  Component{
 }
 const mapStateToProps=(state)=>{
     return {
-        posts:state.posts,
-        categories:state.categories,
-        comments:state.comments
+        posts:state.posts
     }
 };
 
 const mapDispatchToProps=(dispatch)=>{
     return{
         addPosts:(data) =>dispatch(addPost(data)),
-        addComments:(data)=>dispatch(addComment(data)),
-        removePosts:(data)=>dispatch(removePost(data)),
-        removeComments:(data)=>dispatch(removeComment(data)),
-        editPosts:(data)=>dispatch(editPost(data)),
-        editComments:(data)=>dispatch(editComment(data)),
     }
 };
 

@@ -12,7 +12,7 @@ import *as PostsAPI from '../utils/PostsAPI';
 import *as CategoriesAPI from '../utils/CategoriesAPI';
 import {connect} from 'react-redux';
 import {addPost,addComment,removePost,increasePostVote,decreasePostVote,
-    removeComment,editPost,editComment,getCategory} from '../Actions';
+    removeComment,getCategory} from '../Actions';
 
 class Home extends  Component{
     state={
@@ -79,8 +79,6 @@ const mapDispatchToProps=(dispatch)=>{
         addComments:(data)=>dispatch(addComment(data)),
         removePosts:(data)=>dispatch(removePost(data)),
         removeComments:(data)=>dispatch(removeComment(data)),
-        editPosts:(data)=>dispatch(editPost(data)),
-        editComments:(data)=>dispatch(editComment(data)),
         getCategories:(data)=>dispatch(getCategory(data)),
         increasePostsVote:(data)=>dispatch(increasePostVote(data)),
         decreasePostsVote:(data)=>dispatch(decreasePostVote(data))

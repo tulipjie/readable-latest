@@ -58,11 +58,6 @@ function posts(state={},action) {
                 }
 
             };
-
-        case EDIT_POST:
-            return {
-
-            };
         case REMOVE_POST:
             return{
                 ...state,
@@ -109,8 +104,6 @@ function comments(state={},action){
                     voteScore:voteScore-1
                 }
             };
-        case EDIT_COMMENT:
-            return {};
         case REMOVE_COMMENT:
             return {
                 ...state,

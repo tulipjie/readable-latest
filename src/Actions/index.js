@@ -73,32 +73,6 @@ export const removeComment=({id,parentId,timestamp,body,author,voteScore,deleted
         parentDeleted
     }
 };
-export const editPost=({id,timestamp,title,body,author,category,voteScore,deleted,commentCount})=>{
-    return{
-        type:EDIT_POST,
-        id,
-        timestamp,
-        title,
-        body,
-        author,
-        category,
-        voteScore,
-        deleted,
-        commentCount
-    }
-};
-export const editComment=({id,parentId,timestamp,body,author,voteScore,deleted})=>{
-    return{
-        type:EDIT_COMMENT,
-        id,
-        parentId,
-        timestamp,
-        body,
-        author,
-        voteScore,
-        deleted
-    }
-};
 export const increasePostVote=({id, timestamp, title, body, author, category, voteScore, deleted,commentCount})=>{
     return {
         type:INCREASE_POST_VOTE,

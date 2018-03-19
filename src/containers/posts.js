@@ -9,7 +9,7 @@ import {Route} from 'react-router-dom';
 import Post from '../Components/post';
 import NavI from '../Components/nav';
 
-import {addPost,addComment,removePost,removeComment,editPost,editComment,
+import {addPost,addComment,removePost,removeComment,
     getCategory,increasePostVote,decreasePostVote,increaseCommentVote,decreaseCommentVote} from '../Actions';
 
 class Posts extends  Component{
@@ -49,7 +49,6 @@ class Posts extends  Component{
 const mapStateToProps=(state)=>{
     return {
         posts:state.posts,
-        categories:state.categories,
         comments:state.comments,
     }
 };
@@ -60,8 +59,6 @@ const mapDispatchToProps=(dispatch)=>{
         addComments:(data)=>dispatch(addComment(data)),
         removePosts:(data)=>dispatch(removePost(data)),
         removeComments:(data)=>dispatch(removeComment(data)),
-        editPosts:(data)=>dispatch(editPost(data)),
-        editComments:(data)=>dispatch(editComment(data)),
         getCategories:(data)=>dispatch(getCategory(data)),
         increasePostsVote:(data)=>dispatch(increasePostVote(data)),
         decreasePostsVote:(data)=>dispatch(decreasePostVote(data)),
