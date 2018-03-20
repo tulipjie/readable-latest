@@ -6,9 +6,9 @@ import {connect} from 'react-redux';
 import *as CommentAPI from '../utils/CommentsAPI';
 import *as PostsAPI from '../utils/PostsAPI';
 import {Route} from 'react-router-dom';
-import Post from '../Components/post';
-import NavI from '../Components/nav';
-import NotFound from '../Components/noMatch';
+import Post from '../Components/Post';
+import NavI from '../Components/NavI';
+import NotFound from '../Components/NotFound';
 
 import *as actions from '../Actions';
 
@@ -37,7 +37,7 @@ class Posts extends  Component{
         const {postId}=this.props.match.params;
         return (
           <div>
-                { !this.props.posts[postId].deleted?
+                { this.props.posts[postId]&&!this.props.posts[postId].deleted?
                     <div>
                         <NavI/>
                         <Route render={()=>(<Post postId={this.state.postId} state={this.props}/>)}/>

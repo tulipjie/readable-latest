@@ -2,8 +2,8 @@ import React,{Component} from "react";
 import {Button,Badge,Collapse,FormGroup,ControlLabel,FormControl} from 'react-bootstrap';
 import *as PostsAPI from '../utils/PostsAPI';
 import *as CommentsAPI from '../utils/CommentsAPI';
-import EditPost from  './editPost';
-import EditComment from  './editComment';
+import EditPost from  './EditPost';
+import EditComment from  './EditComment';
 import {Route} from 'react-router-dom';
 
 function randomWord(mount){

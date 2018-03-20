@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
 import {Route,Switch} from 'react-router-dom';
-import Home from './home';
-import Posts from './posts';
-import Categories from './categories';
+import Home from './Home';
+import Posts from './Posts';
+import Categories from './Categories';
+import NotFound from '../Components/NotFound';
 
 class App extends Component {
   render() {
     return (
-    <div>
+    <React.Fragment>
         <Switch>
             <Route exact path="/"  component={Home}/>
-            <Route  path="/:category/:postId" component={Posts}/>
-            <Route  path="/:category" component={Categories}/>
+            <Route exact path="/:category/:postId" component={Posts}/>
+            <Route exact path="/:category" component={Categories}/>
+            <Route component={NotFound}/>
         </Switch>
-    </div>
+    </React.Fragment>
     );
   }
 }

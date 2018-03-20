@@ -6,10 +6,10 @@ import {Link,Route} from 'react-router-dom';
 import {Button,Badge,Collapse} from 'react-bootstrap';
 import  '../css/index.css';
 import *as PostsAPI from '../utils/PostsAPI';
-import EditPost from './editPost';
+import EditPost from './EditPost';
 
 
-class Nav extends Component{
+class List extends Component{
     state={
         open:false
     };
@@ -40,4 +40,4 @@ class Nav extends Component{
         )
     }
 }
-export default Nav;
+export default List;

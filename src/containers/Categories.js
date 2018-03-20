@@ -3,10 +3,10 @@
  */
 import React,{Component} from "react";
 import {connect} from 'react-redux';
-import NavI from '../Components/nav';
+import NavI from '../Components/NavI';
 import {addPost} from '../Actions';
 import *as PostsAPI from '../utils/PostsAPI';
-import List from '../Components/list';
+import List from '../Components/List';
 import {Route} from 'react-router-dom';
 
 class Categories extends  Component{

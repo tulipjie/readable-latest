@@ -4,10 +4,10 @@
 import React,{Component} from "react";
 import {Grid,Row,Col,Button} from 'react-bootstrap';
 import {Route} from 'react-router-dom';
-import Glide from '../Components/glide';
-import List from '../Components/list';
-import NavI from '../Components/nav';
-import AddPost from '../Components/addPost';
+import Glide from '../Components/Glide';
+import List from '../Components/List';
+import NavI from '../Components/NavI';
+import AddPost from '../Components/AddPost';
 import * as PostsAPI from '../utils/PostsAPI';
 import * as CategoriesAPI from '../utils/CategoriesAPI';
 import {connect} from 'react-redux';
