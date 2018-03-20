@@ -1,21 +1,21 @@
-This project was bootstrapped with Create React App.
-It's implement function include edit,delete,vote,post a post and you can comment it.Comments
-can be edit, delete,vote and post.
+This project was bootstrapped with Create React App.<br>
+It's implement function include edit,delete,vote,post a post and you can comment it.Comments<br>
+can be edit, delete,vote and post.<br>
 
-In the project directory,you can install:
+In the project directory,you can install:<br>
 
-##npm install
+## npm install
 
-You can run:
+You can run:<br>
 
-##npm start
+## npm start
 
-The page will reload if you make edits.
-You will also see any lint errors in the console.
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.<br>
 
-##npm test
+## npm test
 
-Launches the test runner in the interactive watch mode.
-See the section about running tests for more information.
+Launches the test runner in the interactive watch mode.<br>
+See the section about running tests for more information.<br>
 
-##npm run build
+## npm run build
