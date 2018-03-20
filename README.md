@@ -2,6 +2,15 @@ This project was bootstrapped with Create React App.<br>
 It's implement function include edit,delete,vote,post a post and you can comment it.Comments<br>
 can be edit, delete,vote and post.<br>
 
+Before you start this project,you should enter api-server and install it,using:<br>
+
+## npm install
+
+and start it:<br>
+
+## node server
+
+Then turn back to directory.<br>
 In the project directory,you can install:<br>
 
 ## npm install
