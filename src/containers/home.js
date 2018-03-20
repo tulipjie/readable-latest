@@ -8,11 +8,10 @@ import Glide from '../Components/glide';
 import List from '../Components/list';
 import NavI from '../Components/nav';
 import AddPost from '../Components/addPost';
-import *as PostsAPI from '../utils/PostsAPI';
-import *as CategoriesAPI from '../utils/CategoriesAPI';
+import * as PostsAPI from '../utils/PostsAPI';
+import * as CategoriesAPI from '../utils/CategoriesAPI';
 import {connect} from 'react-redux';
-import {addPost,addComment,removePost,increasePostVote,decreasePostVote,
-    removeComment,getCategory} from '../Actions';
+import * as actions from '../Actions';
 
 class Home extends  Component{
     state={
@@ -75,13 +74,13 @@ const mapStateToProps=(state)=>{
 
 const mapDispatchToProps=(dispatch)=>{
     return{
-        addPosts:(data) =>dispatch(addPost(data)),
-        addComments:(data)=>dispatch(addComment(data)),
-        removePosts:(data)=>dispatch(removePost(data)),
-        removeComments:(data)=>dispatch(removeComment(data)),
-        getCategories:(data)=>dispatch(getCategory(data)),
-        increasePostsVote:(data)=>dispatch(increasePostVote(data)),
-        decreasePostsVote:(data)=>dispatch(decreasePostVote(data))
+        addPosts:(data) =>dispatch(actions.addPost(data)),
+        addComments:(data)=>dispatch(actions.addComment(data)),
+        removePosts:(data)=>dispatch(actions.removePost(data)),
+        removeComments:(data)=>dispatch(actions.removeComment(data)),
+        getCategories:(data)=>dispatch(actions.getCategory(data)),
+        increasePostsVote:(data)=>dispatch(actions.increasePostVote(data)),
+        decreasePostsVote:(data)=>dispatch(actions.decreasePostVote(data))
     }
 };
 

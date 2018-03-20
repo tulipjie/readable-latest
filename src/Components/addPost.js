@@ -1,6 +1,3 @@
-/**
- * Created by sxy on 2018/3/18.
- */
 import React,{Component} from 'react';
 import {Button,FormGroup,ControlLabel,FormControl} from 'react-bootstrap';
 import *as PostsAPI from '../utils/PostsAPI';
@@ -60,8 +57,7 @@ class AddPost extends Component {
         };
 
         return (
-        <div>
-
+        <React.Fragment>
             <form>
                 <FormGroup controlId="formBasicText">
                     <ControlLabel>Post Title</ControlLabel>
@@ -108,8 +104,7 @@ class AddPost extends Component {
                     Add Post
                 </Button>
             </form>
-        </div>
-
+        </React.Fragment>
         );
     }
 }

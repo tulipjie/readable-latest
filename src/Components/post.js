@@ -1,6 +1,3 @@
-/**
- * Created by sxy on 2018/3/11.
- */
 import React,{Component} from "react";
 import {Button,Badge,Collapse,FormGroup,ControlLabel,FormControl} from 'react-bootstrap';
 import *as PostsAPI from '../utils/PostsAPI';
@@ -131,7 +128,7 @@ class Post extends  Component{
                         </h4>
                         <Collapse in={this.state.edit}>
                             <div>
-                                <Route render={()=>(<EditPost state={this.props.state}/>)}/>
+                                <Route render={()=>(<EditPost state={post}/>)}/>
                             </div>
                         </Collapse>
                         <Collapse in={this.state.open}>

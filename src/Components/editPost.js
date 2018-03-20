@@ -30,8 +30,7 @@ class EditPost extends Component {
             body:content,
             title:title,
         };
-        const {posts}=this.props.state;
-        const item=Object.keys(this.props.state.posts)[0];
+
         return (
             <div>
                 <form>
@@ -42,7 +41,7 @@ class EditPost extends Component {
                             type="text"
                             placeholder="Enter text"
                             onChange={this.titleChange}
-                            defaultValue={posts[item].title}
+                            defaultValue={this.props.state.title}
                         />
                         <FormControl.Feedback />
                     </FormGroup>
@@ -53,18 +52,17 @@ class EditPost extends Component {
                             type="text"
                             placeholder="Enter text"
                             onChange={this.contentChange}
-                            defaultValue={posts[item].body}
+                            defaultValue={this.props.state.body}
                         />
                         <FormControl.Feedback />
                     </FormGroup>
                    <Button
                        type="submit"
-                        onClick={()=>PostsAPI.editPost(posts[item].id,post)}
+                       onClick={()=>PostsAPI.editPost(this.props.state.id,post)}
                     >
                         Edit Post
                     </Button>
                 </form>
-
             </div>
 
         );

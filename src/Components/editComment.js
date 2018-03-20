@@ -24,7 +24,7 @@ class EditComment extends Component {
             body:content
         };
         return (
-            <div>
+            <React.Fragment>
                 <form>
                     <FormGroup controlId="formBasicText">
                         <ControlLabel>Post Content</ControlLabel>
@@ -42,11 +42,10 @@ class EditComment extends Component {
                         type="submit"
                         onClick={()=>CommentsAPI.editComment(this.props.state.id,comment)}
                     >
-                        Edit Comment
+                            Edit Comment
                     </Button>
                 </form>
-
-            </div>
+            </React.Fragment>
 
         );
     }

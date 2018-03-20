@@ -14,10 +14,10 @@ class Categories extends  Component{
         const {addPosts}=this.props;
         const {category}=this.props.match.params;
         PostsAPI.getByCategory(category).then((posts) =>{
-                posts.sort((a,b)=>{
-                    return b.voteScore-a.voteScore
+            posts.sort((a,b)=>{
+                return b.voteScore-a.voteScore
                 }).map((post)=>{
-                    return addPosts(post)
+                return addPosts(post)
                 });
             });
     }
@@ -27,11 +27,10 @@ class Categories extends  Component{
         for (let j=0;j<item.length;j++){
             list.push(this.props.posts[item[j]])
         }
-
         return (
             <div>
                 <NavI/>
-               <Route render={()=><List state={this.props} list={list}/>}/>
+                <Route render={()=><List state={this.props} list={list}/>}/>
             </div>
         )
     }

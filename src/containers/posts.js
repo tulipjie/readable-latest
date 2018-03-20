@@ -8,9 +8,9 @@ import *as PostsAPI from '../utils/PostsAPI';
 import {Route} from 'react-router-dom';
 import Post from '../Components/post';
 import NavI from '../Components/nav';
+import NotFound from '../Components/noMatch';
 
-import {addPost,addComment,removePost,removeComment,
-    getCategory,increasePostVote,decreasePostVote,increaseCommentVote,decreaseCommentVote} from '../Actions';
+import *as actions from '../Actions';
 
 class Posts extends  Component{
     state={
@@ -34,12 +34,16 @@ class Posts extends  Component{
         });
     }
     render(){
-
+        const {postId}=this.props.match.params;
         return (
-            <div>
-                <NavI/>
-                <Route render={()=>(<Post postId={this.state.postId} state={this.props}/>)}/>
-            </div>
+          <div>
+                { !this.props.posts[postId].deleted?
+                    <div>
+                        <NavI/>
+                        <Route render={()=>(<Post postId={this.state.postId} state={this.props}/>)}/>
+                    </div>:<NotFound/>
+                }
+          </div>
 
         )
 
@@ -55,15 +59,15 @@ const mapStateToProps=(state)=>{
 
 const mapDispatchToProps=(dispatch)=>{
     return{
-        addPosts:(data) =>dispatch(addPost(data)),
-        addComments:(data)=>dispatch(addComment(data)),
-        removePosts:(data)=>dispatch(removePost(data)),
-        removeComments:(data)=>dispatch(removeComment(data)),
-        getCategories:(data)=>dispatch(getCategory(data)),
-        increasePostsVote:(data)=>dispatch(increasePostVote(data)),
-        decreasePostsVote:(data)=>dispatch(decreasePostVote(data)),
-        increaseCommentsVote:(data)=>dispatch(increaseCommentVote(data)),
-        decreaseCommentsVote:(data)=>dispatch(decreaseCommentVote(data))
+        addPosts:(data) =>dispatch(actions.addPost(data)),
+        addComments:(data)=>dispatch(actions.addComment(data)),
+        removePosts:(data)=>dispatch(actions.removePost(data)),
+        removeComments:(data)=>dispatch(actions.removeComment(data)),
+        getCategories:(data)=>dispatch(actions.getCategory(data)),
+        increasePostsVote:(data)=>dispatch(actions.increasePostVote(data)),
+        decreasePostsVote:(data)=>dispatch(actions.decreasePostVote(data)),
+        increaseCommentsVote:(data)=>dispatch(actions.increaseCommentVote(data)),
+        decreaseCommentsVote:(data)=>dispatch(actions.decreaseCommentVote(data))
 
     }
 };

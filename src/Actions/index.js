@@ -4,12 +4,10 @@
 
 export const ADD_POST='ADD_POST';
 export const REMOVE_POST='REMOVE_POST';
-export const EDIT_POST='EDIT_POST';
 export const INCREASE_POST_VOTE='INCREASE_POST_VOTE';
 export const DECREASE_POST_VOTE='DECREASE_POST_VOTE';
 export const ADD_COMMENT='ADD_COMMENT';
 export const REMOVE_COMMENT='REMOVE_COMMENT';
-export const EDIT_COMMENT='EDIT_COMMENT';
 export const INCREASE_COMMENT_VOTE='INCREASE_COMMENT_VOTE';
 export const DECREASE_COMMENT_VOTE='DECREASE_COMMENT_VOTE';
 export const GET_CATEGORY='GET_CATEGORY';
@@ -45,86 +43,47 @@ export const addComment=({id,parentId,timestamp,body,author,voteScore,deleted,pa
         parentDeleted
     }
 };
-export const removePost=({id,timestamp,title,body,author,category,voteScore,deleted,commentCount})=>{
+export const removePost=({id,deleted})=>{
     return{
         type:REMOVE_POST,
         id,
-        timestamp,
-        title,
-        body,
-        author,
-        category,
-        voteScore,
-        deleted,
-        commentCount
+        deleted
     }
 };
 
-export const removeComment=({id,parentId,timestamp,body,author,voteScore,deleted,parentDeleted})=>{
+export const removeComment=({id,deleted})=>{
     return{
         type:REMOVE_COMMENT,
         id,
-        parentId,
-        timestamp,
-        body,
-        author,
-        voteScore,
-        deleted,
-        parentDeleted
+        deleted
     }
 };
-export const increasePostVote=({id, timestamp, title, body, author, category, voteScore, deleted,commentCount})=>{
+export const increasePostVote=({id, voteScore})=>{
     return {
         type:INCREASE_POST_VOTE,
         id,
-        timestamp,
-        title,
-        body,
-        author,
-        category,
-        voteScore,
-        deleted,
-        commentCount
+        voteScore
     }
 };
-export const decreasePostVote=({id, timestamp, title, body, author, category, voteScore, deleted,commentCount})=>{
+export const decreasePostVote=({id,  voteScore})=>{
     return {
         type:DECREASE_POST_VOTE,
         id,
-        timestamp,
-        title,
-        body,
-        author,
-        category,
-        voteScore,
-        deleted,
-        commentCount
+        voteScore
     }
 };
-export const increaseCommentVote=({id,parentId,timestamp,body,author,voteScore,deleted,parentDeleted})=>{
+export const increaseCommentVote=({id,voteScore})=>{
     return {
         type:INCREASE_COMMENT_VOTE,
         id,
-        parentId,
-        timestamp,
-        body,
-        author,
-        voteScore,
-        deleted,
-        parentDeleted
+        voteScore
     }
 };
-export const decreaseCommentVote=({id,parentId,timestamp,body,author,voteScore,deleted,parentDeleted})=>{
+export const decreaseCommentVote=({id,voteScore})=>{
     return {
         type:DECREASE_COMMENT_VOTE,
         id,
-        parentId,
-        timestamp,
-        body,
-        author,
-        voteScore,
-        deleted,
-        parentDeleted
+        voteScore
     }
 };
 export const getCategory=({name,path})=>{

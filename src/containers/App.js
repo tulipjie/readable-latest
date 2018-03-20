@@ -4,9 +4,6 @@ import Home from './home';
 import Posts from './posts';
 import Categories from './categories';
 
-
-
-
 class App extends Component {
   render() {
     return (
@@ -15,11 +12,8 @@ class App extends Component {
             <Route exact path="/"  component={Home}/>
             <Route  path="/:category/:postId" component={Posts}/>
             <Route  path="/:category" component={Categories}/>
-
-
         </Switch>
     </div>
-
     );
   }
 }

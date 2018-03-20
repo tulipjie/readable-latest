@@ -1,6 +1,3 @@
-/**
- * Created by sxy on 2018/3/12.
- */
 import React,{Component} from 'react';
 import {Carousel} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
