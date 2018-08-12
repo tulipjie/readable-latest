@@ -1,30 +1,10 @@
-This project was bootstrapped with Create React App.<br>
-It's implement function include edit,delete,vote,post a post and you can comment it.Comments<br>
-can be edit, delete,vote and post.<br>
-
-Before you start this project,you should enter api-server and install it,using:<br>
-
-## npm install
-
-and start it:<br>
-
-## node server
-
-Then turn back to directory.<br>
-In the project directory,you can install:<br>
-
-## npm install
-
-You can run:<br>
-
-## npm start
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.<br>
-
-## npm test
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about running tests for more information.<br>
-
-## npm run build
+### 这是结合使用react-redux写的一个博客管理系统，主要实现的功能如下：
+* 第一、实现了用户的注册、登陆的功能，在登录条件下用户页面显示本用户的发表的所有博客。
+* 第二、实现了发表博客、删除博客、博客分类显示的功能，在登录的情况下，用户可以发表不同类型的博客，该博客将显示在不同的分类下；同时用户也可以删除任意自己发表的博客。
+* 第三、实现了发表评论、删除评论的功能，用户在登录的情况下，可以对自己的博客以及他人的博客发表评论，同时也可以删除自己发表的评论。
+* 第四、实现了用点赞的功能，用户可以给自己或他人的博客或者评论点赞。
+## 使用步骤：
+* 第一步 下载源码
+* 第二步 使用npm install 安装相关依赖
+* 第三步 在api-server文件夹下，使用node server运行后台程序
+* 第四步 使用npm start运行项目，打开浏览器转到http://localhost:3000/ 查看项目效果
